@@ -1,0 +1,24 @@
+---
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb5 w-two-thirds-ns ph3 ph0-l center">
+
+  <div class="f6 ttu tracked black-50 pb2">
+    <a class="link black-50 dim" href="/projects/">projects</a>
+  </div>
+
+  <h1 class="f2 fw8 lh-solid mv1">{{ page.title }}</h1>
+  {% if page.subtitle %}<h2 class="f3 fw3 lh-copy mt1 i black-70">{{ page.subtitle }}</h2>{% endif %}
+
+  {% if page.heroimage %}
+  <p><img class="w-100" src="{{ page.heroimage }}" alt="{{ page.title }}"></p>
+  {% endif %}
+
+  <div class="f5 lh-copy">{{ content }}</div>
+
+</div>
+
+{% include footer.html %}

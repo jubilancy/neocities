@@ -1,0 +1,24 @@
+---
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb5 w-two-thirds-ns ph3 ph0-l center">
+
+  <div class="f6 ttu tracked black-50 pb2">
+    <a class="link black-50 dim" href="/links/">links</a>
+    {% if page.date %}&middot; {{ page.date | date: "%B %-d, %Y" }}{% endif %}
+  </div>
+
+  <div class="f4 lh-copy">{{ page.link }}</div>
+
+  {% if page.quote and page.quote != "" %}
+  <blockquote class="f5 lh-copy bl bw2 b--newgreen ml0 pl3 black-70">{{ page.quote }}</blockquote>
+  {% endif %}
+
+  {{ content }}
+
+</div>
+
+{% include footer.html %}

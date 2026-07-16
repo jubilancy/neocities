@@ -1,0 +1,54 @@
+---
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+{% assign folder = page.folder %}
+
+<div class="pt4 pt5-l pb5 ph3 ph4-l">
+
+  <div class="f6 ttu tracked black-50 pb2">
+    <a class="link black-50 dim" href="/graphics/">graphics</a> / {{ folder.slug }}
+  </div>
+
+  <h1 class="f2 fw8 lh-solid mv1">{{ folder.name }}</h1>
+  {% if folder.description %}<p class="f4 fw3 lh-copy mt1 i black-70">{{ folder.description }}</p>{% endif %}
+  <p class="f6 black-50 ttu tracked">{{ folder.count }} {% if folder.count == 1 %}image{% else %}images{% endif %}</p>
+
+  <div class="flex flex-wrap items-start pt3">
+    {% for image in folder.images %}
+    <figure class="ma0 mr3 mb3 pa2 ba b--black-10 br2 bg-white tc gfx-item"
+            data-url="{{ site.url }}{{ image.src }}" title="Click to copy the image URL">
+      <img src="{{ image.src }}" alt="{{ image.name }}" loading="lazy" class="db center" style="image-rendering:pixelated;max-width:100%;">
+      <figcaption class="f7 black-50 pt2 ibmplexmono">{{ image.filename }}</figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+
+  <div id="gfx-toast" class="dn fixed bottom-1 right-1 bg-black white pa3 br2 f6 z-2">URL copied</div>
+</div>
+
+<script>
+  (function () {
+    var toast = document.getElementById("gfx-toast");
+    function flash(msg) {
+      toast.textContent = msg;
+      toast.classList.remove("dn");
+      setTimeout(function () { toast.classList.add("dn"); }, 1400);
+    }
+    document.querySelectorAll(".gfx-item").forEach(function (el) {
+      el.style.cursor = "pointer";
+      el.addEventListener("click", function () {
+        var url = el.getAttribute("data-url");
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(url).then(function () { flash("copied " + url); });
+        } else {
+          window.prompt("Copy this URL:", url);
+        }
+      });
+    });
+  })();
+</script>
+
+{% include footer.html %}
