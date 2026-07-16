@@ -1,0 +1,39 @@
+---
+permalink: /wiki/
+title: Wiki
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+{% include wikiheader.html %}
+
+<h1>Wiki</h1>
+
+<p class="f5 lh-copy">A digital garden. Pages live at <code>_wiki/&lt;folder&gt;/&lt;page&gt;.md</code>
+and group themselves by folder below — no index to maintain by hand.</p>
+
+{% comment %} collect the distinct folder names out of _wiki/<folder>/<page>.md {% endcomment %}
+{% assign folder_names = "" %}
+{% for item in site.wiki %}
+  {% assign seg = item.relative_path | split: "/" %}
+  {% if seg.size > 2 %}{% assign folder_names = folder_names | append: seg[1] | append: "," %}{% endif %}
+{% endfor %}
+{% assign folders = folder_names | split: "," | uniq | sort %}
+
+{% for folder in folders %}
+  <h2 class="wikigreen f4 ttu tracked pt4">{{ folder | replace: "-", " " }}</h2>
+  <ul class="lh-copy">
+    {% for item in site.wiki %}
+      {% assign seg = item.relative_path | split: "/" %}
+      {% if seg[1] == folder %}
+        {% assign slug = item.url | split: "/" | last | replace: "-", " " %}
+        <li><a href="{{ item.url }}">{{ item.title | default: slug }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+{% include wikifooter.html %}
+
+{% include footer.html %}

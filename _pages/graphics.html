@@ -1,0 +1,47 @@
+---
+permalink: /graphics/
+title: Graphics
+subtitle: Blinkies, buttons, stickers and other web ephemera.
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb5 ph3 ph4-l">
+
+  <h1 class="f2 fw8 lh-solid mv1">{{ page.title }}</h1>
+  <p class="f4 fw3 lh-copy mt1 i black-70">{{ page.subtitle }}</p>
+
+  {% assign folders = site.data.graphics_folders %}
+
+  {% if folders and folders.size > 0 %}
+  <div class="flex flex-wrap pt4">
+    {% for folder in folders %}
+    <a class="link black db w-100 w-50-m w-third-l pr3-ns pb4" href="{{ folder.url }}">
+      <div class="ba b--black-10 br2 pa3 h-100 bg-animate hover-bg-near-white">
+        <div class="flex items-center" style="min-height:48px">
+          <img src="{{ folder.cover }}" alt="" loading="lazy" style="image-rendering:pixelated;max-height:44px;max-width:100%">
+        </div>
+        <div class="f4 b pt3 newgreen">{{ folder.name }}</div>
+        <div class="f6 black-50 ttu tracked">{{ folder.count }} {% if folder.count == 1 %}image{% else %}images{% endif %}</div>
+        {% if folder.description %}<div class="f6 black-70 lh-copy pt2">{{ folder.description }}</div>{% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="pv4 f5 lh-copy ba b--black-10 br2 pa4 mt4 bg-near-white">
+    <p class="mt0"><b>No images yet.</b></p>
+    <p>Drop files into any folder under <code class="ibmplexmono">graphics/</code> and push. A folder
+      with at least one image gets its own page automatically — no config to edit.</p>
+    <p class="mb0">Folders ready to fill:
+      <code class="ibmplexmono">blinkies</code>, <code class="ibmplexmono">stickers</code>,
+      <code class="ibmplexmono">pixels</code>, <code class="ibmplexmono">88x31</code>,
+      <code class="ibmplexmono">banners</code>, <code class="ibmplexmono">dividers</code>,
+      <code class="ibmplexmono">stamps</code>, <code class="ibmplexmono">cursors</code>.</p>
+  </div>
+  {% endif %}
+
+</div>
+
+{% include footer.html %}

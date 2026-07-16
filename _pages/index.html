@@ -1,0 +1,62 @@
+---
+permalink: /
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb2 w-two-thirds-ns ph3 ph0-l center">
+
+  <div class="pv3">
+    <h1 class="f2 fw8 lh-solid mv1 newgreen">{{ site.title }}</h1>
+    {% if site.description != "" %}
+    <p class="lh-copy f4">{{ site.description }}</p>
+    {% endif %}
+  </div>
+
+  <div class="pv4">
+    <div class="ttu f5 newgreen tracked b pb3">Latest writing</div>
+    {% for post in site.posts limit:5 %}
+    <div class="flex flex-wrap w-100 pv2 justify-between">
+      <div class="w-100 w-auto-l"><a class="link black b" href="{{ post.url }}">{{ post.title }}</a></div>
+      <div class="black-50 f6">{{ post.date | date: "%B %-d, %Y" }}</div>
+    </div>
+    {% endfor %}
+    <div class="fr pv3"><a class="link black" href="/writing/">See all <i data-feather="arrow-right" class="h1 v-mid"></i></a></div>
+  </div>
+
+  {% assign folders = site.data.graphics_folders %}
+  {% if folders and folders.size > 0 %}
+  <div class="pv4 cb">
+    <div class="ttu f5 newgreen tracked b pb3">Graphics</div>
+    <div class="flex flex-wrap items-center">
+      {% for folder in folders %}
+      <a class="link black-90 dib mr3 mb3 tc" href="{{ folder.url }}">
+        <div class="ba b--black-10 br2 pa2 flex items-center justify-center" style="height:52px">
+          <img src="{{ folder.cover }}" alt="" loading="lazy" style="image-rendering:pixelated;max-height:36px;max-width:100%">
+        </div>
+        <div class="f7 ttu tracked black-50 pt1">{{ folder.name }}</div>
+      </a>
+      {% endfor %}
+    </div>
+    <div class="fr pv2"><a class="link black" href="/graphics/">All graphics <i data-feather="arrow-right" class="h1 v-mid"></i></a></div>
+  </div>
+  {% endif %}
+
+  <div class="pv4 cb">
+    <div class="ttu f5 newgreen tracked b pb3">Recently in the library</div>
+    {% assign recent = site.library | sort: "date_saved" | reverse %}
+    {% for item in recent limit:5 %}
+    <div class="flex flex-wrap w-100 pv2 justify-between">
+      <div class="w-100 w-auto-l">
+        {% if item.link %}<a class="link black b" href="{{ item.link }}">{{ item.title }}</a>{% else %}<span class="b">{{ item.title }}</span>{% endif %}
+      </div>
+      <div class="black-50 f6">{{ item.date_saved | date: "%B %-d, %Y" }}</div>
+    </div>
+    {% endfor %}
+    <div class="fr pv3"><a class="link black" href="/library/">See all <i data-feather="arrow-right" class="h1 v-mid"></i></a></div>
+  </div>
+
+</div>
+
+{% include footer.html %}

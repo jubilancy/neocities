@@ -1,0 +1,47 @@
+---
+permalink: /feeds/
+title: Feeds
+subtitle: The blogs I read. An RSS reader with no server.
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb5 w-two-thirds-ns ph3 ph0-l center">
+
+  <h1 class="f2 fw8 lh-solid mv1">{{ page.title }}</h1>
+  <p class="f4 fw3 lh-copy mt1 i black-70">{{ page.subtitle }}</p>
+
+  {% assign feeds = site.data.feeds %}
+
+  {% if feeds and feeds.items.size > 0 %}
+  <p class="f6 black-50 ttu tracked bb b--black-10 pb3">
+    {{ feeds.feed_count }} feeds &middot; updated {{ feeds.generated }} &middot;
+    <a class="newgreen b link" href="/feeds.opml">grab the OPML</a>
+  </p>
+
+  {% for item in feeds.items %}
+  <div class="pv3 bb b--black-10">
+    <div class="f5 b"><a class="black link" href="{{ item.url }}">{{ item.title }}</a></div>
+    <div class="f7 black-50 ttu tracked pv1">
+      <a class="black-50 link dim" href="{{ item.site_url }}">{{ item.site }}</a>
+      {% if item.date != "" %}&middot; {{ item.date }}{% endif %}
+    </div>
+    {% if item.summary != "" %}<p class="f6 lh-copy black-70 mv1">{{ item.summary }}</p>{% endif %}
+  </div>
+  {% endfor %}
+
+  {% else %}
+  <div class="pv4 f5 lh-copy ba b--black-10 br2 pa4 mt4 bg-near-white">
+    <p class="mt0"><b>No feed data yet.</b></p>
+    <p>The list is built from <a href="/feeds.opml">feeds.opml</a> by
+      <code class="ibmplexmono">scripts/fetch_feeds.py</code>, which writes
+      <code class="ibmplexmono">_data/feeds.json</code> before Jekyll runs.
+      The GitHub Action does this on every deploy and once a day on a cron.</p>
+    <p class="mb0">To see it locally: <code class="ibmplexmono">pip install feedparser && python scripts/fetch_feeds.py</code></p>
+  </div>
+  {% endif %}
+
+</div>
+
+{% include footer.html %}

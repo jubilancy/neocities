@@ -1,0 +1,22 @@
+---
+permalink: /feeds.opml
+---
+<opml version="1.0">
+    <head>
+        <title>eliana's RSS subscriptions</title>
+    </head>
+    <body>
+<outline title="Feeds" text="Feeds">
+  <outline type='rss' xmlUrl='http://joeycofone.com/blog?format=RSS'/>
+  <outline type='rss' xmlUrl='https://om.co/feed/'/>
+  <outline type='rss' xmlUrl='http://seanblanda.com/feed/'/>
+  <outline type='rss' xmlUrl='https://gilest.org/feed/index.xml'/>
+  <outline type='rss' xmlUrl='http://feeds.feedburner.com/ArnoldWaldstein'/>
+  <outline type='rss' xmlUrl='http://feeds.feedburner.com/robinsloan'/>
+  <outline type='rss' xmlUrl='http://www.briandell.info/feed.rss'/>
+  <outline type='rss' xmlUrl='http://feeds.feedburner.com/avc'/>
+  <outline type='rss' xmlUrl='https://interconnected.org/home/feed'/>
+  <outline type='rss' xmlUrl='http://subpixel.space/feed.xml'/>
+</outline>
+    </body>
+</opml>

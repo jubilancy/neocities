@@ -1,0 +1,27 @@
+---
+permalink: /blogchains/
+title: Blogchains
+subtitle: Post series that grow over time.
+---
+{% include head.html %}
+
+{% include nav.html %}
+
+<div class="pt4 pt5-l pb5 w-two-thirds-ns ph3 ph0-l center">
+
+  <h1 class="f2 fw8 lh-solid mv1">{{ page.title }}</h1>
+  <p class="f4 fw3 lh-copy mt1 i black-70">{{ page.subtitle }}</p>
+
+  {% for chain in site.blogchains %}
+  {% assign slug = chain.url | split: "/" | last %}
+  {% assign chainposts = site.posts | where_exp: "item", "item.blogchain contains slug" %}
+  <a class="link black db mv3 pa4 ba b--newgreen br2 bg-near-white dim" href="{{ chain.url }}">
+    <div class="f3 fw6">{{ chain.title }}</div>
+    {% if chain.subtitle %}<div class="i black-70 pt1">{{ chain.subtitle }}</div>{% endif %}
+    <div class="f6 ttu tracked black-50 pt3">{{ chainposts | size }} posts</div>
+  </a>
+  {% endfor %}
+
+</div>
+
+{% include footer.html %}
