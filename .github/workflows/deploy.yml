@@ -1,0 +1,52 @@
+name: Deploy to Neocities
+
+on:
+  push:
+    branches: [main]
+  # refresh the /feeds page once a day without needing a push
+  schedule:
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-to-neocities
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true # installs gems + caches them between runs
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Refresh RSS reader data
+        # writes _data/feeds.json, which /feeds renders at build time.
+        # never fail the deploy just because someone's blog is down.
+        continue-on-error: true
+        run: |
+          pip install feedparser
+          python scripts/fetch_feeds.py
+
+      - name: Build site
+        run: bundle exec jekyll build
+        env:
+          JEKYLL_ENV: production
+
+      - name: Deploy to Neocities
+        uses: bcomnes/deploy-to-neocities@v3
+        with:
+          api_key: ${{ secrets.NEOCITIES_API_KEY }}
+          dist_dir: _site
+          cleanup: true
+          preview_before_deploy: true
+          neocities_supporter: false
