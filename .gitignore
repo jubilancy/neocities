@@ -1,0 +1,16 @@
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+vendor/
+Gemfile.lock
+.bundle/
+
+# junk that made the original repo messy
+.DS_Store
+.obsidian/
+.vscode/
+Untitled.md
+
+# generated at build time by scripts/fetch_feeds.py
+_data/feeds.json
