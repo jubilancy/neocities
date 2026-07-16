@@ -30,3 +30,4 @@ web ephemera. Take what you like.
 Jekyll, forked from [Tom Critchlow's site](https://github.com/tomcritchlow/tomcritchlow.github.io),
 built by GitHub Actions and deployed to [Neocities](https://neocities.org).
 Type is Libre Franklin and IBM Plex Mono. Layout classes are [Tachyons](https://tachyons.io).
+Craft star origami paper Icon by Lima Studio on <a href="https://icon-icons.com/authors/993-lima-studio">Icon-Icons.com</a>
