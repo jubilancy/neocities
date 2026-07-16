@@ -1,0 +1,31 @@
+# OPTIONAL. The gallery needs zero config: make a folder under graphics/, drop
+# images in, and it appears at /graphics/<folder>/ on the next build.
+#
+# This file only overrides the auto-generated display name and adds a blurb.
+# Keys must match folder names exactly. Unlisted folders still show up.
+
+88x31:
+  name: "88x31 buttons"
+  description: "The standard indie web button. Right-click, save, link back."
+
+blinkies:
+  name: "Blinkies"
+
+stickers:
+  name: "Stickers"
+
+pixels:
+  name: "Pixels"
+
+banners:
+  name: "Banners"
+
+dividers:
+  name: "Dividers"
+
+stamps:
+  name: "Stamps"
+
+cursors:
+  name: "Cursors"
+  description: "Heads up: .cur and .ani are not on the Neocities allowed-file-types list. Use .png or .gif."

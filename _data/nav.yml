@@ -1,0 +1,38 @@
+# Left-hand nav. feathericon = any icon name from https://feathericons.com
+main_links:
+  - name: Home
+    feathericon: home
+    url: "/"
+  - name: Writing
+    feathericon: edit-3
+    url: "/writing/"
+  - name: Wiki
+    feathericon: git-branch
+    url: "/wiki/"
+  - name: Library
+    feathericon: layers
+    url: "/library/"
+  - name: Links
+    feathericon: link
+    url: "/links/"
+  - name: Graphics
+    feathericon: image
+    url: "/graphics/"
+  - name: About
+    feathericon: user
+    url: "/about/"
+  - name: Now
+    feathericon: clock
+    url: "/now/"
+  - name: Feeds
+    feathericon: rss
+    url: "/feeds/"
+
+# Optional extra sections rendered under the main nav, e.g.
+# groups:
+#   - group_name: Elsewhere
+#     links:
+#       - name: Tumblr
+#         feathericon: external-link
+#         url: "https://etamr.tumblr.com"
+groups: []

@@ -1,0 +1,70 @@
+# ---------------------------------------------------------------------------
+# basedgirl.neocities.org
+# Forked + reorganised from github.com/tomcritchlow/tomcritchlow.github.io
+# ---------------------------------------------------------------------------
+
+title:        eliana
+description:  ""          # <- shows in <meta description> and the RSS feed
+url:          "https://basedgirl.neocities.org"
+baseurl:      ""
+
+permalink:    pretty
+timezone:     America/New_York
+
+# Pages live in _pages/ so the repo root stays readable.
+# Every file in _pages MUST declare its own `permalink:` in front matter.
+include:
+  - _pages
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - vendor
+  - .github
+
+collections:
+  posts:
+    output: true
+  wiki:
+    output: true
+    permalink: /wiki/:path/
+  library:
+    output: true
+    permalink: /library/:name/
+  links:
+    output: true
+  projects:
+    output: true
+  blogchains:
+    output: true
+    permalink: /blogchains/:name/
+
+defaults:
+  - scope:
+      type: "wiki"
+    values:
+      layout: "wiki"
+  - scope:
+      type: "library"
+    values:
+      layout: "libraryitem"
+  - scope:
+      type: "blogchains"
+    values:
+      layout: "blogchain"
+  - scope:
+      type: "posts"
+    values:
+      layout: "blog"
+
+plugins: []
+
+sass:
+  style: compressed
+
+# Kramdown/Liquid niceties
+kramdown:
+  input: GFM
+  hard_wrap: false
