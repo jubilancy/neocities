@@ -1,3 +1,6 @@
+---
+---
+
 # commands.md
 
 ## Fetch TikTok audio metadata as JSON
